@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!-- From video tutorial: basic HTML structure -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- From video -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- From video -->
+  <title>Memory Card Game</title>
+  <link rel="stylesheet" href="styles.css"> <!-- From video: linking CSS -->
+</head>
+<body>
+
+  <!-- START SCREEN: Custom feature, not from video -->
+  <div id="start-screen">
+    <h1>Memory Card Game</h1> <!-- Custom title style -->
+    <p>Choose your mode:</p> <!-- Custom text -->
+    <button id="normal-btn">Normal Game</button> <!-- Custom button -->
+    <button id="timed-btn">Timed Game</button> <!-- Custom button -->
+  </div>
+
+  <!-- GAME SCREEN: Adapted from video -->
+  <div id="game-screen" style="display: none;">
+    <p id="status">Find all matching pairs!</p> <!-- From video: status text -->
+    
+    <!-- Timer: Custom feature, not from video -->
+    <p id="timer" style="display: none;">Time: <span id="time">60</span>s</p>
+    
+    <div id="game-board"></div> <!-- From video: board container -->
+    
+    <button id="restart-button">Restart game</button> <!-- From video: restart button -->
+    
+    <!-- Back to menu: Custom feature -->
+    <button id="back-button">Back to menu</button>
+  </div>
+
+  <!-- Confetti container: Custom feature -->
+  <div id="confetti-container"></div>
+
+  <!-- JS script: adapted from video with custom changes -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<!--MEMORY GAME
+Based on YouTube tutorial:
+ https://www.youtube.com/watch?v=totdD9wDWqc--> 
+
+
+<!-- NOTES ON SOURCES -->
+<!-- From video tutorial:
+     - Basic HTML structure
+     - Game board container (#game-board)
+     - Restart button (#restart-button)
+     - Status text (#status)
+     - Card flip logic is implemented in JS
+
+     Custom additions / changes:
+     - Start screen (#start-screen) with buttons to choose normal or timed game
+     - Timer display (#timer and #time)
+     - Back to menu button (#back-button)
+     - Confetti container (#confetti-container)
+     - Replaced symbols with your own images for cards -->
+ 

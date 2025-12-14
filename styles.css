@@ -1,0 +1,99 @@
+/* From video: showing how to import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); 
+
+body {
+  font-family: 'Poppins', sans-serif; /* Custom font choice */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #2f3e4f, #34506b, #4a5f73, #6b7c8f); /* Custom background gradient */
+  gap: 20px;
+  color: white; /* Custom: text color for visibility */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 8px; /* Custom: rounded buttons for style */
+}
+
+#game-board {
+  display: grid; /* From video: grid layout for cards */
+  grid-template-columns: repeat(4, 120px); /* From video: is it 3 cards per row but I chose it to be four because he had 9 cards I have 12 */
+  grid-auto-rows: 160px; /* From video: card height */
+  gap: 15px; /* From video: spacing between cards */
+  justify-content: center; /* Custom alignment tweak */
+}
+
+/* --- CARD STYLES --- */
+/* Card flip animation based on the video tutorial */
+.Card {
+  width: 120px; /* From video: card size */
+  height: 160px; /* From video: card size */
+  perspective: 1000px; /* From video: for 3D flip */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; /* From video: needed for 3D flip */
+  transition: transform 0.6s ease; /* From video: smooth flip */
+  cursor: pointer; /* Custom: makes cards clickable */
+}
+
+/* Front and back faces of card */
+.card-front, .card-back {
+  position: absolute; /* From video */
+  width: 100%; /* From video */
+  height: 100%; /* From video */
+  backface-visibility: hidden; /* From video: hides back face */
+  border-radius: 10px; /* Custom: rounded corners for style */
+}
+
+/* Rotate front to hide by default */
+.card-front { transform: rotateY(180deg); } /* From video: front hidden initially */
+
+/* Flip on click: based on video */
+.Card.flipped .card-inner { transform: rotateY(180deg); } /* From video: flip animation */
+
+/* Your custom images applied */
+.card-front img, .card-back img {
+  width: 100%; /* Custom: fit image to card */
+  height: 100%; /* Custom: fit image to card */
+  object-fit: cover; /* Custom: maintain aspect ratio */
+  border-radius: 10px; /* Custom: match card border radius */
+}
+
+/* --- CONFETTI STYLES --- */
+/* Custom: Mine idea for small confetti when winning */
+#confetti-container {
+  position: fixed; /* Custom: overlay confetti above everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Custom: so clicks pass through */
+  overflow: visible;
+  z-index: 1000; /* Custom: on top of game */
+}
+
+.confetti {
+  position: absolute; /* Custom: each confetti piece */
+  width: 6px; /* Custom: small size */
+  height: 6px; /* Custom: small size */
+  background-color: #701810; /* Custom: red confetti */
+  opacity: 0.9; /* Custom: slightly transparent */
+  transform: rotate(45deg); /* Custom: rotate for visual style */
+  animation: confetti-fall 1s linear forwards; /* Custom: falling animation */
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; } /* Custom: start at top */
+  100% { transform: translateY(360px) rotate(360deg); opacity: 0; } /* Custom: fall and disappear */
+}
